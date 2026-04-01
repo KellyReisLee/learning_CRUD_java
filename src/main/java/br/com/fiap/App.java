@@ -12,17 +12,21 @@ public class App
 
 
         // Criar carro novo
-       Carro carro =  carroDao.inserir(new Carro(2010, "Cross Fox"));
+      // Carro carro =  carroDao.inserir(new Carro(2010, "Cross Fox"));
 
        // Exibir carros da lista
-        for(Carro item: carroDao.listar()){
+       /* for(Carro item: carroDao.listar()){
             System.out.println(item.modelo);
             System.out.println(item.id);
-        }
+        }*/
 
 
-        carroDao.atualizar(carro);
+       // carroDao.atualizar(carro);
 
+
+
+        // Deletar carro:
+        carroDao.deletar(26);
         // Exibir carros da lista
         for(Carro item: carroDao.listar()){
             System.out.println(item.modelo);

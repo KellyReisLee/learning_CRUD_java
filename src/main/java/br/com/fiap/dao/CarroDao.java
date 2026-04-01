@@ -109,5 +109,36 @@ public class CarroDao {
         }
     }
 
+    public void deletar(int carroId) throws SQLException{
+
+        Carro carroEncontrado = this.encontrar(carroId);
+
+        if(carroEncontrado == null){
+            System.out.println("Carro não encontrado!");
+            return;
+
+        }else {
+            Connection connection = DbConnectionFactory.createConnection();
+
+            // INSERT INTO carros (ano, modelo) values (2000, 'Ka');
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM carros WHERE id = ?");
+
+            statement.setInt(1, carroId);
+
+
+            int affectedRows =  statement.executeUpdate();
+
+            if(affectedRows!= 1){
+                System.out.println("Opss! Algo errado ocorreu ao deletar o carro!");
+            }else {
+                System.out.println("O carro foi deletado com sucesso!");
+            }
+
+            connection.close();
+
+        }
+    }
+
 
 }
